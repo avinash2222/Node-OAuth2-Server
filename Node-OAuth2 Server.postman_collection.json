@@ -1,0 +1,388 @@
+{
+	"info": {
+		"_postman_id": "1e2a72ad-7851-4797-95ff-70943672273b",
+		"name": "Node-OAuth2 Server",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "user registration",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\":\"user5\",\n\t\"password\":\"password5\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create-appilcation-client",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password1",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTkyYmMwNGNjYzMwODBhNDAzMzU0ZTMiLCJpYXQiOjE1ODY2ODE5MTAsImV4cCI6MTU4NjY4NTUxMH0.veUlgs24bzIzPbW5TiHUEo2lKjyyVgrDPPqMxrOHmA8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Beer Locker Notifier",
+							"type": "text"
+						},
+						{
+							"key": "id",
+							"value": "this is my id",
+							"type": "text"
+						},
+						{
+							"key": "secret",
+							"value": "this is my secret",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3001/api/clients",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"clients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post code",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "this_is_my_secret",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "this_is_my_id",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "code",
+							"value": "mu0v72PV6Erztt3o",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "text"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "http://localhost:3000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/oauth2/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"oauth2",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add beers",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer u1Z90Bz3ffvMzzIkr2N45XWJ9f2O7vHKkVxhWlmAGTLbjhf6E0MLo7Y7Zlf3r70HRfrDQNsxG0Q0LACWohxmya1I8cOyY8x2wQPPkGpttVX1sZtYLml9qaPHzC3iRhE5SrUdXQ9a25tXoosFMu2sP50BMeFQ7QY4m4C8T7tcbvmBrTmzS1Vb8OQfg0bjCf1r4XHEUamMoJGUSoF935DQUNz85dT49MQMJS2oNEtaZ47oiAi3sjMHS1aPnPmlqp5q",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "QAuth2 Beer",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "IPA",
+							"type": "text"
+						},
+						{
+							"key": "quantity",
+							"value": "12",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/beers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"beers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete a user",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "auth-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoidXNlciIsImlzcyI6Im9tbml3eXNlIiwic3ViIjoiNWU4NWFkZWQxOGE0MGYzZDM4MGQ1ZmE3IiwiaWF0IjoxNTg2MDg3MjMzNjYxLCJleHAiOjE1ODYxNzM2MzM2NjF9.sovqJBVWTxyH1Ap5--78PUWNTaCo5MYANouozH0QxE8",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/user/:_id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						":_id"
+					],
+					"variable": [
+						{
+							"key": "_id",
+							"value": "5e85ae0a18a40f3d380d5fad"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin registration",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"first_name\":\"user-1\",\n    \"last_name\":\"Singh\",\n    \"phone_number\":\"9000000001\",\n    \"password\":\"123\",\n    \"email\" : \"avi1@gmail.com\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/user/register/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"register",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find All Users",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password1",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTkyMTkzN2U5OTQwYzIyMGNkYTcwOTQiLCJpYXQiOjE1ODY2MzMwMTUsImV4cCI6MTU4NjYzNjYxNX0.QRI4ICngmaH-8IOd5mgz0KecvSTusIusFHbFrzQdNok",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3001/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "single user details",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTkyMTkzN2U5OTQwYzIyMGNkYTcwOTQiLCJpYXQiOjE1ODY2MzMwMTUsImV4cCI6MTU4NjYzNjYxNX0.QRI4ICngmaH-8IOd5mgz0KecvSTusIusFHbFrzQdNok",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/user/:_id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						":_id"
+					],
+					"variable": [
+						{
+							"key": "_id",
+							"value": "5e921937e9940c220cda7094"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update a user",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "auth-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoidXNlciIsImlzcyI6Im9tbml3eXNlIiwic3ViIjoiNWU4NWFkZWQxOGE0MGYzZDM4MGQ1ZmE3IiwiaWF0IjoxNTg2MDg3MjMzNjYxLCJleHAiOjE1ODYxNzM2MzM2NjF9.sovqJBVWTxyH1Ap5--78PUWNTaCo5MYANouozH0QxE8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"first_name\":\"user-4\",\n    \"last_name\":\"reddy5\",\n    \"phone_number\":\"9000000004\",\n    \"password\":\"123\",\n    \"email\" : \"avi4@gmail.com\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/user/:_id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						":_id"
+					],
+					"variable": [
+						{
+							"key": "_id",
+							"value": "5e85ae0018a40f3d380d5fab"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
